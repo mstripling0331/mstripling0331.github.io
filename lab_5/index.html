@@ -286,7 +286,7 @@
       countrylist.innerHTML = "";
       getCountries();
       randcountries.forEach(element => countrylist.innerHTML += "<li>" +"<span style= 'font-weight:bold'>" + element.code + "</span> " + element.name + "</li>");
-      countries.forEach(element => {if (randcountries.includes(element) === false){console.log(element);}})
+      countries.forEach(element => {if (randcountries.includes(element) === false){console.log(element);}});
     }
 
     content.appendChild(countrylist);
