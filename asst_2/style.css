@@ -2,6 +2,10 @@ h1 {
   font-family: helvetica, arial, sans-serif;
   text-align: center;
 }
+h2 {
+  font-family: helvetica, arial, sans-serif;
+  text-align: center;
+}
 
 body {
   width: 640px;
@@ -10,7 +14,9 @@ body {
 
 .full-img {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 640px;
   height: 480px;
 }
