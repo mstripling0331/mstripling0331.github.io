@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Maps Lab</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+    <style>
+      #mapid {
+        width: 640px;
+        height: 480px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="header">Frontend Libraries: Maps Lab</div>
+        <div class="content">
+          <div id="mapid"></div>
+        </div>
+        <div class="footer">Make some markers work!</div>
+      </div>
+    </div>
+    <script>
+      
+      const coords = [{long:-76.996114, lat:38.759579},{long:-76.90064, lat:38.901794},{long:-76.812885,lat:38.954462}];
+      const mymap = L.map("mapid").setView([51.505, -0.09], 13);
+      L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+        {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken:
+            "pk.eyJ1IjoibXN0cmlwbGluZzAzMzEiLCJhIjoiY2s4bm9tdDd2MHcyazNncHN1YW1qbDZnayJ9.S2S5YV_RsSFPgrStp7lb3g",
+        }
+      ).addTo(mymap);
+      
+      const mark1 = L.marker([38.988127, -76.941562]).addTo(mymap);
+      const str1 = "Hornbake Library";
+      mark1.bindPopup(str1).openPopup();
+      
+      const mark2 = L.marker([coords[0].lat, coords[0].long]).addTo(mymap);
+      const mark3 = L.marker([coords[1].lat, coords[1].long]).addTo(mymap);
+      const mark4 = L.marker([coords[2].lat, coords[2].long]).addTo(mymap);
+      console.log(coords[0].lat)
+      /* attempted to use fetch and failed miserably
+      let placearray = [];
+      fetch('places.json')
+        .then(response => response.json())
+        .then(data => placearray = data)
+        .then(() => console.log(placearray))
+      
+      const mark2 = L.marker([placearray[1].geocoded_column_1.coordinates[1], placearray[1].geocoded_column_1.coordinates[0]]).addTo(mymap);
+      const mark3 = L.marker([placearray[1].geocoded_column_1.coordinates[2], placearray[1].geocoded_column_1.coordinates[0]]).addTo(mymap);
+      const mark4 = L.marker([placearray[1].geocoded_column_1.coordinates[3], placearray[1].geocoded_column_1.coordinates[0]]).addTo(mymap);
+      */
+    </script>
+  </body>
+</html>
